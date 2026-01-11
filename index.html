@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahma Jemal | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #ff6b9d;
+            --accent-tertiary: #c77dff;
+            --accent-quaternary: #4ecdc4;
+            --border-color: #333333;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #e9ecef;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            --border-color: #dee2e6;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover svg {
+            color: white;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-tertiary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .text-gradient {
+            background: var(--gradient-tertiary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-tertiary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-tertiary);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-section {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.3);
+        }
+
+        .floating-heart {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            padding: 15px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-tertiary);
+            border-radius: 4px;
+            transition: width 2s ease;
+            width: 0;
+        }
+
+        .skill-icon {
+            font-size: 1.5rem;
+        }
+
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin: 0 auto;
+            display: block;
+            border: 2px solid var(--accent-tertiary);
+            transition: all 0.3s ease;
+        }
+
+        .about-image:hover {
+            border-color: var(--accent-primary);
+            transform: scale(1.02) rotate(2deg);
+        }
+
+        /* Recommendations */
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .recommendation-category h3 {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .recommendation-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+
+        .recommendation-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .platform-tag {
+            font-size: 0.8rem;
+            background: var(--bg-tertiary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            color: var(--text-muted);
+        }
+
+        .recommendation-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-tertiary);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-progress {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .status-planning {
+            background: rgba(0, 123, 255, 0.2);
+            color: #007bff;
+        }
+
+        .status-concept {
+            background: rgba(108, 117, 125, 0.2);
+            color: #6c757d;
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-footer p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container,
+            .about-grid,
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-image,
+            .about-image {
+                width: 280px;
+                height: 280px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-image,
+            .about-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="nav-logo">RJ</div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#fun-facts" class="nav-link">Fun Facts</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        <span id="typing-text">Welcome to my digital world! 🌟</span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="text-gradient">Rahma Jemal</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">Computer Science Student</p>
+                    
+                    <p class="hero-description">
+                        3rd Year at Meda Welabu University • Beginner coder with big dreams • 
+                        Night walker & documentary enthusiast (but definitely not a coffee person! ☕❌)
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            💻 View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            📧 Let's Connect
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image-section">
+                    <div style="position: relative;">
+                        <img 
+                            src="me1.gif" 
+                            alt="Rahma Jemal" 
+                            class="hero-image"
+                        />
+                        <div class="floating-heart animate-float">
+                            ❤️
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section fade-in" style="background: rgba(26, 26, 26, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    About <span class="text-gradient">Me</span>
+                </h2>
+                <p class="section-subtitle">
+                    A curious CS student who believes that the best code is written at midnight 
+                    (with some good crime documentaries playing in the background) 🌙
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Hey there! I'm <span class="highlight">Rahma Jemal</span>, 
+                        born and raised in the beautiful town of Shashemene 🌿. As the baby of 5 siblings, 
+                        I'm a 3rd-year Computer Science student at Meda Welabu University, still figuring 
+                        out this whole coding thing, but I'm having a blast doing it! 🚀
+                    </p>
+                    <p>
+                        When I'm not debugging my code (which happens more often than I'd like to admit 😅), 
+                        you'll find me taking peaceful walks, getting lost in true crime documentaries, 
+                        or discovering new music and podcasts. Being the youngest in my family means I'm 
+                        naturally curious about everything!
+                    </p>
+                    <p>
+                        Our favorite family bonding time? When we all find some show to obsess over together 
+                        or discover something fascinating that gets us all talking for hours. There's nothing 
+                        quite like that moment when everyone's equally invested in the same thing! 📺✨
+                    </p>
+                    <p>
+                        And yes, my mom has this special talent for interrupting my coding sessions at the 
+                        most crucial moments - like right when I'm about to fix a bug! � She'll walk win asking 
+                        if I've eaten or reminding me about some random thing, and I'm like "Mom, I'm in the zone!" 
+                        But honestly, I wouldn't have it any other way. Her timing is legendary! 💕
+                    </p>
+                    <p>
+                        Fun fact: I'm probably the only CS student who runs on pure determination instead of 
+                        caffeine - coffee and I just don't get along! 🚫☕ But hey, who needs caffeine when 
+                        you have the thrill of finally understanding why your loop was infinite, and siblings who cheer you on?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    My <span class="text-gradient">Skills</span>
+                </h2>
+                <p class="section-subtitle">
+                    Technologies and tools I'm working with
+                </p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>
+                        <span class="skill-icon" style="color: #ff6b9d;">🌐</span>
+                        Frontend Development
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML5</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>CSS3</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Bootstrap</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>
+                        <span class="skill-icon" style="color: #4ecdc4;">⚙️</span>
+                        Backend & Database
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>PHP</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="60"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MongoDB</span>
+                            <span>55%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="55"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>
+                        <span class="skill-icon" style="color: #c77dff;">🛠️</span>
+                        Tools & Others
+                    </h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Git/GitHub</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>VS Code</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Responsive Design</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests" class="section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    My <span class="text-gradient">Interests</span>
+                </h2>
+                <p class="section-subtitle">
+                    The things that keep me inspired and motivated every day
+                </p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon" style="color: #ff6b9d;">🎵</div>
+                    <h3 class="card-title">Music</h3>
+                    <p class="card-description">From lo-fi beats while coding to discovering hidden gems across all genres</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #00d4ff;">🎧</div>
+                    <h3 class="card-title">Podcasts</h3>
+                    <p class="card-description">Learning from conversations and stories that expand my worldview</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #ff4757;">👁️</div>
+                    <h3 class="card-title">Crime Documentaries</h3>
+                    <p class="card-description">Fascinated by the psychology behind true crime cases (I might solve one someday! 🕵️‍♀️)</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #c77dff;">🌙</div>
+                    <h3 class="card-title">Night Walks</h3>
+                    <p class="card-description">My favorite thinking time - when the world is quiet and ideas flow freely</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="section fade-in" style="background: rgba(42, 42, 42, 0.3);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    My <span class="text-gradient">Recommendations</span>
+                </h2>
+                <p class="section-subtitle">
+                    Documentaries and podcasts that have kept me entertained (and educated!)
+                </p>
+            </div>
+            
+            <div class="recommendations-grid">
+                <div class="recommendation-category">
+                    <h3>
+                        <span style="color: #ff4757;">👁️</span>
+                        Crime Documentaries
+                    </h3>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            Making a Murderer
+                            <span class="platform-tag">Netflix</span>
+                        </div>
+                        <p class="recommendation-desc">Netflix's gripping series that'll have you questioning everything about the justice system</p>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            The Staircase
+                            <span class="platform-tag">HBO Max</span>
+                        </div>
+                        <p class="recommendation-desc">A murder mystery with more twists than my debugging sessions</p>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            Wild Wild Country
+                            <span class="platform-tag">Netflix</span>
+                        </div>
+                        <p class="recommendation-desc">Cult story so wild, you'll think it's fiction (spoiler: it's not!)</p>
+                    </div>
+                </div>
+                
+                <div class="recommendation-category">
+                    <h3>
+                        <span style="color: #00d4ff;">🎧</span>
+                        Podcasts
+                    </h3>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            Serial
+                            <span class="platform-tag">Spotify/Apple</span>
+                        </div>
+                        <p class="recommendation-desc">The podcast that started my true crime obsession - you've been warned!</p>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            CodeNewbie
+                            <span class="platform-tag">All platforms</span>
+                        </div>
+                        <p class="recommendation-desc">Perfect for fellow coding beginners who need some encouragement</p>
+                    </div>
+                    
+                    <div class="recommendation-item">
+                        <div class="recommendation-title">
+                            My Favorite Murder
+                            <span class="platform-tag">Spotify/Apple</span>
+                        </div>
+                        <p class="recommendation-desc">True crime with humor - because sometimes you need to laugh at the darkness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    My <span class="text-gradient">Projects</span>
+                </h2>
+                <p class="section-subtitle">
+                    A collection of my coding adventures (and misadventures!)
+                </p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="project-card">
+                    <div style="position: relative; overflow: hidden;">
+                        <img 
+                            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=300&fit=crop" 
+                            alt="Food Delivery Website"
+                            class="project-image"
+                        />
+                        <div class="status-badge" style="background: rgba(40, 167, 69, 0.2); color: #28a745;">Completed</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">Food Delivery Website</h3>
+                        <p class="project-description">A modern food delivery platform with responsive design and interactive user interface. Features menu browsing, cart functionality, and order management.</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                        
+                        <button class="btn btn-ghost" style="width: 100%;">
+                            🔗 View Project
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div style="position: relative; overflow: hidden;">
+                        <img 
+                            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop" 
+                            alt="CRUD Application"
+                            class="project-image"
+                        />
+                        <div class="status-badge" style="background: rgba(40, 167, 69, 0.2); color: #28a745;">Completed</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">CRUD Application</h3>
+                        <p class="project-description">A complete Create, Read, Update, Delete application with database operations. Great practice for learning backend development and data management.</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                        
+                        <button class="btn btn-ghost" style="width: 100%;">
+                            🔗 View Project
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div style="position: relative; overflow: hidden;">
+                        <img 
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" 
+                            alt="University Management System"
+                            class="project-image"
+                        />
+                        <div class="status-badge status-progress">In Progress</div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <h3 class="project-title">University Management System</h3>
+                        <p class="project-description">A comprehensive web application for managing student records and courses using modern web technologies and responsive design principles.</p>
+                        
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
+                        
+                        <button class="btn btn-ghost" style="width: 100%;">
+                            🔗 View Project
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Facts Section -->
+    <section id="fun-facts" class="section fade-in" style="background: rgba(26, 26, 26, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Fun <span class="text-gradient">Facts</span>
+                </h2>
+                <p class="section-subtitle">
+                    Some quirky things about me that make me... well, me! 🤪
+                </p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon" style="color: #ff4757;">☕</div>
+                    <h3 class="card-title">Coffee-Free Zone</h3>
+                    <p class="card-description">I'm probably the only CS student powered by water and determination instead of caffeine ☕❌</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #ffa502;">🕵️</div>
+                    <h3 class="card-title">Crime Doc Expert</h3>
+                    <p class="card-description">I've watched 100+ crime documentaries. I'm basically a detective now (don't test me!)</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #ff6b9d;">🎵</div>
+                    <h3 class="card-title">Playlist Curator</h3>
+                    <p class="card-description">I have different playlists for debugging, coding, and 'why-won't-this-work' moments</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="color: #00d4ff;">👶</div>
+                    <h3 class="card-title">Baby of 5</h3>
+                    <p class="card-description">Being the youngest sibling means I'm naturally curious and always asking "but why?" - perfect for coding!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact fade-in">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Let's <span class="text-gradient">Connect</span>
+                </h2>
+                <p class="section-subtitle">
+                    Whether you want to discuss code, recommend a crime documentary, or just say hi - 
+                    I'd love to hear from you! (Just don't expect me to meet you for coffee ☕😉)
+                </p>
+            </div>
+            
+            <div class="contact-links">
+                <a href="mailto:romejemal@gmail.com" class="btn btn-primary">
+                    📧 Email Me
+                </a>
+                <a href="https://github.com/itsrome" class="btn btn-secondary">
+                    🐙 GitHub
+                </a>
+                <a href="https://instagram.com/itsrome____" class="btn btn-ghost">
+                    � Instagram
+                </a>
+            </div>
+            
+            <div class="contact-footer">
+                <p>Made with ❤️ (and lots of debugging) by Rahma Jemal • 2024</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">
+                    "Code is like humor. When you have to explain it, it's bad." - Cory House
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', currentTheme);
+
+        // Update icon based on current theme
+        function updateThemeIcon(theme) {
+            if (theme === 'light') {
+                themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><path d="m12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>';
+            } else {
+                themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            }
+        }
+
+        // Initialize icon
+        updateThemeIcon(currentTheme);
+
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Typing animation
+        const typingText = document.getElementById('typing-text');
+        const fullText = "Welcome to my digital world! 🌟";
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < fullText.length) {
+                typingText.textContent = fullText.substring(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width + '%';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
